@@ -1,0 +1,292 @@
+:root {
+    /* ベース：少しピンクみのある重すぎない漆黒（ダークローズブラック） */
+    --bg-color: #1a1618;
+    /* カード背景など、一段階明るいベース */
+    --bg-light: #261f22;
+    /* メリハリを出すためのピュアホワイト */
+    --text-main: #ffffff;
+    /* サブテキスト用 */
+    --text-sub: #bbaeb4;
+    /* 共感・女性らしさのくすみピンク */
+    --accent-pink: #d88c9a;
+    /* 上質感・枠線のゴールド */
+    --accent-gold: #cba268;
+    
+    --line-gold: rgba(203, 162, 104, 0.3);
+    --line-pink: rgba(216, 140, 154, 0.2);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+    line-height: 2.2;
+    letter-spacing: 0.12em;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 暖光エフェクト（ほんのりピンク・ゴールド系） */
+.light-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at 50% 30%, rgba(216, 140, 154, 0.08) 0%, rgba(26, 22, 24, 0) 70%),
+                radial-gradient(circle at 80% 80%, rgba(203, 162, 104, 0.05) 0%, rgba(26, 22, 24, 0) 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 500px; 
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 60px 0;
+}
+
+h2.section-title {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--accent-gold);
+    margin-bottom: 50px;
+    line-height: 1.6;
+    letter-spacing: 0.15em;
+}
+
+h2.section-title span.en {
+    display: block;
+    font-size: 11px;
+    color: var(--accent-pink);
+    margin-bottom: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+/* FV（ファーストビュー） */
+.fv {
+    padding: 100px 0 60px;
+    text-align: center;
+}
+
+.fv-logo {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--accent-gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+}
+
+.fv-subtitle {
+    font-size: 13px;
+    color: var(--accent-pink);
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+}
+
+.fv-catch {
+    font-size: 24px;
+    line-height: 1.8;
+}
+
+/* テキストの強調（ピンク文字） */
+.t-pink { color: var(--accent-pink); font-weight: 500; }
+.t-gold { color: var(--accent-gold); font-weight: 500; }
+.t-sub { color: var(--text-sub); font-size: 0.9em; }
+
+/* ストーリー部分（余白たっぷりで読ませる） */
+.story-block {
+    margin-bottom: 60px;
+}
+.story-block p {
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+/* モノローグ風引用デザイン */
+.monologue {
+    padding: 30px;
+    border-left: 2px solid var(--accent-pink);
+    background: linear-gradient(90deg, var(--line-pink) 0%, transparent 100%);
+    margin: 40px 0;
+    font-size: 16px;
+    line-height: 2;
+}
+
+/* 診断リスト UI */
+.checklist-box {
+    background: var(--bg-light);
+    border: 1px solid var(--line-gold);
+    padding: 40px 24px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* 四隅のシュッとした装飾 */
+.corner { position: absolute; width: 12px; height: 12px; border: 1px solid var(--accent-gold); }
+.top-left { top: -4px; left: -4px; border-right: none; border-bottom: none; }
+.top-right { top: -4px; right: -4px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: -4px; left: -4px; border-right: none; border-top: none; }
+.bottom-right { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+
+.check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--accent-gold);
+    background: rgba(26, 22, 24, 0.8);
+}
+
+/* 診断結果 UI */
+.result-box {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line-pink);
+}
+.result-box:last-child {
+    border-bottom: none;
+}
+.result-count {
+    font-size: 13px;
+    color: var(--accent-pink);
+    margin-bottom: 8px;
+}
+.result-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+.result-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+/* メソッド・プログラムリスト */
+.ul-styled {
+    list-style: none; /* remove default */
+    padding-left: 0;      
+}
+
+.ul-styled li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 12px;
+}
+.ul-styled li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-family: sans-serif;
+    font-size: 0.9em;
+}
+
+/* コース料金表カード */
+.price-card {
+    background: var(--bg-light);
+    border: 1px solid var(--line-gold);
+    padding: 30px 24px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.price-badge {
+    display: inline-block;
+    color: var(--bg-color);
+    background: var(--accent-gold);
+    padding: 4px 16px;
+    font-size: 11px;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+}
+.price-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.price-amount {
+    font-size: 24px;
+    font-family: sans-serif;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+}
+.price-features {
+    text-align: left;
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+/* FAQ */
+.faq-item {
+    margin-bottom: 30px;
+}
+.faq-q {
+    font-weight: 500;
+    color: var(--accent-gold);
+    margin-bottom: 8px;
+}
+.faq-a {
+    font-size: 14px;
+    color: var(--text-sub);
+}
+
+/* LINE / IG CTAボタン */
+.btn-ig {
+    display: block;
+    width: 100%;
+    padding: 24px 20px;
+    border: 1px solid var(--accent-pink);
+    background: rgba(216, 140, 154, 0.05);
+    color: var(--text-main);
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+.btn-ig:hover {
+    background: rgba(216, 140, 154, 0.15);
+}
+.btn-subtext {
+    display: block;
+    font-size: 11px;
+    color: var(--accent-pink);
+    margin-bottom: 4px;
+}
+
+footer {
+    text-align: center;
+    padding: 60px 0 40px;
+    font-size: 11px;
+    color: var(--text-sub);
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+}

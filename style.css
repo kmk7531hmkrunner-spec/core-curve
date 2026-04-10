@@ -1,19 +1,27 @@
 :root {
-    /* ベース：少しピンクみのある重すぎない漆黒（ダークローズブラック） */
-    --bg-color: #1a1618;
-    /* カード背景など、一段階明るいベース */
-    --bg-light: #261f22;
-    /* メリハリを出すためのピュアホワイト */
-    --text-main: #ffffff;
-    /* サブテキスト用 */
-    --text-sub: #bbaeb4;
-    /* 共感・女性らしさのくすみピンク */
-    --accent-pink: #d88c9a;
-    /* 上質感・枠線のゴールド */
-    --accent-gold: #cba268;
+    /* ベース：ニュートラルで深い黒。上のグラスを引き立たせるため極力シンプルに */
+    --bg-color: #121011;
     
-    --line-gold: rgba(203, 162, 104, 0.3);
-    --line-pink: rgba(216, 140, 154, 0.2);
+    /* グラスモーフィズム用の透ける白背景 */
+    --bg-glass: rgba(255, 255, 255, 0.05);
+    /* ぼかしガラスのエッジを際立たせる線 */
+    --line-glass: rgba(255, 255, 255, 0.15);
+    --line-glass-light: rgba(255, 255, 255, 0.3); /* 光が当たるエッジ */
+    
+    /* どこまでも透き通るピュアホワイト */
+    --text-main: #ffffff;
+    --text-sub: #c9bbc1;
+    
+    /* コンセプトカラー */
+    --accent-pink: #e1a6b4;
+    --accent-gold: #dbc09e;
+    
+    /* ガラスの奥の光の球（オーブ）の色 */
+    --glow-pink: rgba(225, 166, 180, 0.25);
+    --glow-gold: rgba(219, 192, 158, 0.15);
+    
+    /* すりガラスの標準的なシャドウ */
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
 body {
@@ -27,15 +35,16 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* 暖光エフェクト（ほんのりピンク・ゴールド系） */
+/* 暖光エフェクト（グラスモーフィズムは「透ける背景」が必要なので、明確な光の球を置く） */
 .light-effect {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle at 50% 30%, rgba(216, 140, 154, 0.08) 0%, rgba(26, 22, 24, 0) 70%),
-                radial-gradient(circle at 80% 80%, rgba(203, 162, 104, 0.05) 0%, rgba(26, 22, 24, 0) 60%);
+    /* ピンクとゴールドの光の球を大胆に配置し、ガラスを通すと綺麗に分散するようにする */
+    background: radial-gradient(circle at 15% 30%, var(--glow-pink) 0%, transparent 50%),
+                radial-gradient(circle at 85% 70%, var(--glow-gold) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -50,6 +59,7 @@ body {
 
 section {
     padding: 60px 0;
+    position: relative;
 }
 
 h2.section-title {
@@ -98,12 +108,12 @@ h2.section-title span.en {
     line-height: 1.8;
 }
 
-/* テキストの強調（ピンク文字） */
+/* テキストカラー */
 .t-pink { color: var(--accent-pink); font-weight: 500; }
 .t-gold { color: var(--accent-gold); font-weight: 500; }
 .t-sub { color: var(--text-sub); font-size: 0.9em; }
 
-/* ストーリー部分（余白たっぷりで読ませる） */
+/* ストーリー部分 */
 .story-block {
     margin-bottom: 60px;
 }
@@ -112,27 +122,51 @@ h2.section-title span.en {
     font-size: 15px;
 }
 
-/* モノローグ風引用デザイン */
+/* グラス共通クラス (Glassmorphism Core) */
+.glass-panel {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--line-glass);
+    border-top: 1px solid var(--line-glass-light); /* 上からの光の反射 */
+    border-left: 1px solid var(--line-glass-light); /* 左からの光の反射 */
+    border-radius: 12px;
+    box-shadow: var(--shadow-glass);
+}
+
+/* モノローグ風グラスパネル */
 .monologue {
     padding: 30px;
-    border-left: 2px solid var(--accent-pink);
-    background: linear-gradient(90deg, var(--line-pink) 0%, transparent 100%);
     margin: 40px 0;
     font-size: 16px;
     line-height: 2;
+    /* 1番：すりガラス効果 */
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--line-glass);
+    border-left: 2px solid var(--accent-pink); /* ピンクのアクセントは残す */
+    border-radius: 4px 12px 12px 4px; /* 左だけ直角め */
+    box-shadow: var(--shadow-glass);
 }
 
-/* 診断リスト UI */
+/* 診断リスト UI（すりガラス） */
 .checklist-box {
-    background: var(--bg-light);
-    border: 1px solid var(--line-gold);
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--line-glass);
+    border-top: 1px solid var(--line-glass-light);
+    border-left: 1px solid var(--line-glass-light);
+    border-radius: 16px;
     padding: 40px 24px;
     margin-bottom: 40px;
     position: relative;
+    box-shadow: var(--shadow-glass);
 }
 
-/* 四隅のシュッとした装飾 */
-.corner { position: absolute; width: 12px; height: 12px; border: 1px solid var(--accent-gold); }
+/* 四隅のシュッとした装飾（邪魔にならないように半透明白に） */
+.corner { position: absolute; width: 12px; height: 12px; border: 1px solid rgba(255,255,255,0.4); }
 .top-left { top: -4px; left: -4px; border-right: none; border-bottom: none; }
 .top-right { top: -4px; right: -4px; border-left: none; border-bottom: none; }
 .bottom-left { bottom: -4px; left: -4px; border-right: none; border-top: none; }
@@ -159,14 +193,15 @@ h2.section-title span.en {
     top: 4px;
     width: 14px;
     height: 14px;
-    border: 1px solid var(--accent-gold);
-    background: rgba(26, 22, 24, 0.8);
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
 }
 
 /* 診断結果 UI */
 .result-box {
     padding: 24px 0;
-    border-bottom: 1px solid var(--line-pink);
+    border-bottom: 1px solid var(--line-glass);
 }
 .result-box:last-child {
     border-bottom: none;
@@ -189,7 +224,7 @@ h2.section-title span.en {
 
 /* メソッド・プログラムリスト */
 .ul-styled {
-    list-style: none; /* remove default */
+    list-style: none;
     padding-left: 0;      
 }
 
@@ -207,14 +242,21 @@ h2.section-title span.en {
     font-size: 0.9em;
 }
 
-/* コース料金表カード */
+/* コース料金表すりガラスカード */
 .price-card {
-    background: var(--bg-light);
-    border: 1px solid var(--line-gold);
-    padding: 30px 24px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--line-glass);
+    border-top: 1px solid var(--line-glass-light);
+    border-left: 1px solid var(--line-glass-light);
+    border-radius: 20px;
+    padding: 40px 24px;
     margin-bottom: 30px;
     text-align: center;
+    box-shadow: var(--shadow-glass);
 }
+
 .price-badge {
     display: inline-block;
     color: var(--bg-color);
@@ -224,7 +266,8 @@ h2.section-title span.en {
     font-family: sans-serif;
     font-weight: bold;
     letter-spacing: 0.1em;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    border-radius: 4px;
 }
 .price-title {
     font-size: 18px;
@@ -235,7 +278,7 @@ h2.section-title span.en {
     font-size: 24px;
     font-family: sans-serif;
     color: var(--accent-gold);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 .price-features {
     text-align: left;
@@ -243,9 +286,16 @@ h2.section-title span.en {
     color: var(--text-sub);
 }
 
-/* FAQ */
+/* FAQ グラススタイル */
 .faq-item {
     margin-bottom: 30px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--line-glass);
+    border-top: 1px solid var(--line-glass-light);
 }
 .faq-q {
     font-weight: 500;
@@ -255,15 +305,18 @@ h2.section-title span.en {
 .faq-a {
     font-size: 14px;
     color: var(--text-sub);
+    line-height: 1.8;
 }
 
-/* LINE / IG CTAボタン */
+/* CTAボタン すりガラススタイル */
 .btn-ig {
     display: block;
     width: 100%;
     padding: 24px 20px;
-    border: 1px solid var(--accent-pink);
-    background: rgba(216, 140, 154, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08); /* ガラスっぽく白めの透過 */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     color: var(--text-main);
     text-align: center;
     text-decoration: none;
@@ -271,15 +324,46 @@ h2.section-title span.en {
     transition: all 0.3s ease;
     box-sizing: border-box;
     margin-bottom: 16px;
+    border-radius: 30px; /* 少し丸みを持たせて女性らしく */
+    box-shadow: 0 4px 15px rgba(225, 166, 180, 0.15); /* 微かなピンクの照り返し */
 }
 .btn-ig:hover {
-    background: rgba(216, 140, 154, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(225, 166, 180, 0.25);
 }
 .btn-subtext {
     display: block;
     font-size: 11px;
     color: var(--accent-pink);
     margin-bottom: 4px;
+}
+
+/* 写真のグラスモーフィズム対応スタイル */
+.img-fluid {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 30px 0;
+    box-shadow: var(--shadow-glass);
+    border: 1px solid var(--line-glass);
+    border-top: 1px solid var(--line-glass-light);
+    object-fit: cover;
+    display: block;
+}
+
+.profile-image, .project-image, .monitor-image {
+    text-align: center;
+}
+
+/* 余白を削ったロゴ用のスタイル（丸い切り抜きを削除） */
+.fv-logo-img {
+    max-width: 200px; /* 余白がなくなったため最適なサイズに指定 */
+    height: auto;
+    margin: 0 auto 30px auto;
+    display: block;
+    /* グラスモーフィズムに合うように微かな光を落とす */
+    filter: drop-shadow(0 4px 15px rgba(219, 192, 158, 0.4));
 }
 
 footer {

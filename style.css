@@ -1,50 +1,64 @@
+/* ===============================================================
+   Core & Curve LP — Design System
+   グラスモーフィズム × 静かなラグジュアリー
+=============================================================== */
+
 :root {
-    /* ベース：ニュートラルで深い黒。上のグラスを引き立たせるため極力シンプルに */
-    --bg-color: #121011;
-    
-    /* グラスモーフィズム用の透ける白背景 */
+    --bg-color: #242122;
     --bg-glass: rgba(255, 255, 255, 0.05);
-    /* ぼかしガラスのエッジを際立たせる線 */
-    --line-glass: rgba(255, 255, 255, 0.15);
-    --line-glass-light: rgba(255, 255, 255, 0.3); /* 光が当たるエッジ */
-    
-    /* どこまでも透き通るピュアホワイト */
+    --line-glass: rgba(255, 255, 255, 0.12);
+    --line-glass-light: rgba(255, 255, 255, 0.28);
+    --line-pink: rgba(225, 166, 180, 0.3);
+    --line-gold: rgba(219, 192, 158, 0.2);
     --text-main: #ffffff;
     --text-sub: #c9bbc1;
-    
-    /* コンセプトカラー */
     --accent-pink: #e1a6b4;
     --accent-gold: #dbc09e;
-    
-    /* ガラスの奥の光の球（オーブ）の色 */
     --glow-pink: rgba(225, 166, 180, 0.25);
     --glow-gold: rgba(219, 192, 158, 0.15);
-    
-    /* すりガラスの標準的なシャドウ */
     --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
 }
 
+/* ===========================
+   ベース
+=========================== */
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color);
+    background: linear-gradient(135deg, #322b2d 0%, #151314 100%);
+    background-attachment: fixed;
     color: var(--text-main);
     font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+    font-size: 16px;
     line-height: 2.2;
     letter-spacing: 0.12em;
+    text-align: center;
     -webkit-font-smoothing: antialiased;
+    /* 意味のまとまりで折り返し */
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
-/* 暖光エフェクト（グラスモーフィズムは「透ける背景」が必要なので、明確な光の球を置く） */
+/* 見出しは均等な行長に */
+h1, h2, h3 {
+    text-wrap: balance;
+}
+
+/* 本文は語の意味で折り返し */
+p, li {
+    text-wrap: pretty;
+}
+
+/* 背景光エフェクト */
 .light-effect {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* ピンクとゴールドの光の球を大胆に配置し、ガラスを通すと綺麗に分散するようにする */
-    background: radial-gradient(circle at 15% 30%, var(--glow-pink) 0%, transparent 50%),
-                radial-gradient(circle at 85% 70%, var(--glow-gold) 0%, transparent 50%);
+    background:
+        radial-gradient(circle at 15% 30%, var(--glow-pink) 0%, transparent 50%),
+        radial-gradient(circle at 85% 70%, var(--glow-gold) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -52,13 +66,9 @@ body {
 .container {
     position: relative;
     z-index: 1;
-    max-width: 500px; 
+    max-width: 500px;
     margin: 0 auto;
     padding: 0 24px;
-    /* 意味のある言葉で改行させる（最新ブラウザ用 ＋ フォールバック） */
-    word-break: keep-all;
-    overflow-wrap: break-word;
-    text-wrap: pretty; /* 意味のまとまりで折り返し（モダンブラウザ） */
 }
 
 section {
@@ -66,6 +76,9 @@ section {
     position: relative;
 }
 
+/* ===========================
+   セクションタイトル
+=========================== */
 h2.section-title {
     font-size: 20px;
     font-weight: 500;
@@ -85,7 +98,9 @@ h2.section-title span.en {
     text-transform: uppercase;
 }
 
-/* FV（ファーストビュー） */
+/* ===========================
+   FV（ファーストビュー）
+=========================== */
 .fv {
     padding: 100px 0 60px;
     text-align: center;
@@ -107,7 +122,19 @@ h2.section-title span.en {
     margin-bottom: 40px;
 }
 
-/* FVスワップエリア（頑張る〜 と 忙しくても〜 の入れ替えゾーン） */
+/* FVロゴ画像 */
+.fv-logo-img {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 30px auto;
+    display: block;
+    filter: drop-shadow(0 4px 15px rgba(219, 192, 158, 0.4));
+}
+
+/* ===========================
+   FVスワップアニメーション
+   [頑張る〜] → [忙しくても〜] 入れ替え
+=========================== */
 .fv-swap-wrap {
     position: relative;
     width: 100%;
@@ -141,12 +168,16 @@ h2.section-title span.en {
     color: var(--accent-pink);
 }
 
-/* テキストカラー */
+/* ===========================
+   テキストカラー
+=========================== */
 .t-pink { color: var(--accent-pink); font-weight: 500; }
 .t-gold { color: var(--accent-gold); font-weight: 500; }
-.t-sub { color: var(--text-sub); font-size: 0.9em; }
+.t-sub  { color: var(--text-sub); font-size: 0.9em; }
 
-/* ストーリー部分 */
+/* ===========================
+   ストーリーブロック
+=========================== */
 .story-block {
     margin-bottom: 60px;
 }
@@ -155,35 +186,38 @@ h2.section-title span.en {
     font-size: 15px;
 }
 
-/* グラス共通クラス (Glassmorphism Core) */
+/* ===========================
+   グラスモーフィズム共通
+=========================== */
 .glass-panel {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--line-glass);
-    border-top: 1px solid var(--line-glass-light); /* 上からの光の反射 */
-    border-left: 1px solid var(--line-glass-light); /* 左からの光の反射 */
+    border-top: 1px solid var(--line-glass-light);
+    border-left: 1px solid var(--line-glass-light);
     border-radius: 12px;
     box-shadow: var(--shadow-glass);
 }
 
-/* モノローグ風グラスパネル */
+/* モノローググラスパネル */
 .monologue {
     padding: 30px;
     margin: 40px 0;
     font-size: 16px;
     line-height: 2;
-    /* 1番：すりガラス効果 */
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--line-glass);
-    border-left: 2px solid var(--accent-pink); /* ピンクのアクセントは残す */
-    border-radius: 4px 12px 12px 4px; /* 左だけ直角め */
+    border-left: 2px solid var(--accent-pink);
+    border-radius: 4px 12px 12px 4px;
     box-shadow: var(--shadow-glass);
 }
 
-/* 診断リスト UI（すりガラス） */
+/* ===========================
+   診断チェックリスト
+=========================== */
 .checklist-box {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);
@@ -198,47 +232,98 @@ h2.section-title span.en {
     box-shadow: var(--shadow-glass);
 }
 
-/* 四隅のシュッとした装飾（邪魔にならないように半透明白に） */
+/* 四隅の装飾 */
 .corner { position: absolute; width: 12px; height: 12px; border: 1px solid rgba(255,255,255,0.4); }
-.top-left { top: -4px; left: -4px; border-right: none; border-bottom: none; }
-.top-right { top: -4px; right: -4px; border-left: none; border-bottom: none; }
-.bottom-left { bottom: -4px; left: -4px; border-right: none; border-top: none; }
-.bottom-right { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+.top-left    { top: -4px; left: -4px;   border-right: none;  border-bottom: none; }
+.top-right   { top: -4px; right: -4px;  border-left: none;   border-bottom: none; }
+.bottom-left { bottom: -4px; left: -4px;  border-right: none; border-top: none; }
+.bottom-right{ bottom: -4px; right: -4px; border-left: none;  border-top: none; }
 
 .check-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: left;
 }
 
 .check-list li {
-    position: relative;
-    padding-left: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
+}
+
+.check-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.7;
+    cursor: pointer;
 }
 
-.check-list li::before {
-    content: '';
+.check-label input[type="checkbox"] {
+    display: none;
+}
+
+.custom-check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    margin-top: 2px;
+    position: relative;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.check-label input:checked + .custom-check {
+    background: var(--accent-pink);
+    border-color: var(--accent-pink);
+}
+
+.check-label input:checked + .custom-check::after {
+    content: '✓';
     position: absolute;
-    left: 0;
-    top: 4px;
-    width: 14px;
-    height: 14px;
-    border: 1px solid rgba(255,255,255,0.5);
-    background: rgba(255,255,255,0.1);
-    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 11px;
+    font-family: sans-serif;
 }
 
-/* 診断結果 UI */
+/* 診断ボタン */
+.btn-ig {
+    display: block;
+    width: 100%;
+    padding: 24px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--text-main);
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Shippori Mincho', serif;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(225, 166, 180, 0.15);
+}
+.btn-ig:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* 診断結果ボックス（モーダル内用） */
 .result-box {
     padding: 24px 0;
     border-bottom: 1px solid var(--line-glass);
 }
-.result-box:last-child {
-    border-bottom: none;
-}
+.result-box:last-child { border-bottom: none; }
 .result-count {
     font-size: 13px;
     color: var(--accent-pink);
@@ -255,12 +340,16 @@ h2.section-title span.en {
     color: var(--text-sub);
 }
 
-/* メソッド・プログラムリスト */
+/* ===========================
+   メソッド・プログラムリスト
+=========================== */
 .ul-styled {
     list-style: none;
-    padding-left: 0;      
+    padding-left: 0;
+    text-align: left;
+    max-width: 360px;
+    margin: 0 auto;
 }
-
 .ul-styled li {
     position: relative;
     padding-left: 1.5em;
@@ -275,7 +364,9 @@ h2.section-title span.en {
     font-size: 0.9em;
 }
 
-/* コース料金表すりガラスカード */
+/* ===========================
+   料金カード
+=========================== */
 .price-card {
     background: var(--bg-glass);
     backdrop-filter: blur(24px);
@@ -288,8 +379,8 @@ h2.section-title span.en {
     margin-bottom: 30px;
     text-align: center;
     box-shadow: var(--shadow-glass);
+    scroll-fade: none;
 }
-
 .price-badge {
     display: inline-block;
     color: var(--bg-color);
@@ -302,11 +393,7 @@ h2.section-title span.en {
     margin-bottom: 20px;
     border-radius: 4px;
 }
-.price-title {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
+.price-title  { font-size: 18px; font-weight: 500; margin-bottom: 12px; }
 .price-amount {
     font-size: 24px;
     font-family: sans-serif;
@@ -319,7 +406,9 @@ h2.section-title span.en {
     color: var(--text-sub);
 }
 
-/* FAQ グラススタイル */
+/* ===========================
+   FAQ
+=========================== */
 .faq-item {
     margin-bottom: 30px;
     background: var(--bg-glass);
@@ -329,6 +418,7 @@ h2.section-title span.en {
     border-radius: 12px;
     border: 1px solid var(--line-glass);
     border-top: 1px solid var(--line-glass-light);
+    text-align: left;
 }
 .faq-q {
     font-weight: 500;
@@ -341,38 +431,9 @@ h2.section-title span.en {
     line-height: 1.8;
 }
 
-/* CTAボタン すりガラススタイル */
-.btn-ig {
-    display: block;
-    width: 100%;
-    padding: 24px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.08); /* ガラスっぽく白めの透過 */
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    color: var(--text-main);
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-    margin-bottom: 16px;
-    border-radius: 30px; /* 少し丸みを持たせて女性らしく */
-    box-shadow: 0 4px 15px rgba(225, 166, 180, 0.15); /* 微かなピンクの照り返し */
-}
-.btn-ig:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(225, 166, 180, 0.25);
-}
-.btn-subtext {
-    display: block;
-    font-size: 11px;
-    color: var(--accent-pink);
-    margin-bottom: 4px;
-}
-
-/* 写真のグラスモーフィズム対応スタイル */
+/* ===========================
+   写真スタイル
+=========================== */
 .img-fluid {
     width: 100%;
     height: auto;
@@ -384,19 +445,200 @@ h2.section-title span.en {
     object-fit: cover;
     display: block;
 }
-
 .profile-image, .project-image, .monitor-image {
     text-align: center;
 }
-
-/* 余白を削ったロゴ用のスタイル（丸い切り抜きを削除） */
-.fv-logo-img {
-    max-width: 200px; /* 余白がなくなったため最適なサイズに指定 */
-    height: auto;
-    margin: 0 auto 30px auto;
+.btn-subtext {
     display: block;
-    /* グラスモーフィズムに合うように微かな光を落とす */
-    filter: drop-shadow(0 4px 15px rgba(219, 192, 158, 0.4));
+    font-size: 11px;
+    color: var(--accent-pink);
+    margin-bottom: 4px;
+}
+
+/* ===========================
+   LINEボタン・SNSリンク
+=========================== */
+.btn-line-full {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #00B900 0%, #00A800 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-radius: 30px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 185, 0, 0.35);
+}
+.btn-line-full:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 185, 0, 0.5);
+}
+
+.sns-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--line-glass-light);
+    color: var(--text-main);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-glass);
+}
+.sns-circle:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   フッター
+=========================== */
+footer {
+    text-align: center;
+    padding: 60px 0 40px;
+    font-size: 11px;
+    color: var(--text-sub);
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+}
+.sns-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.sns-links a {
+    color: var(--text-sub);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+.sns-links a:hover {
+    color: var(--accent-pink);
+    border-color: var(--accent-pink);
+}
+
+/* ===========================
+   ① FVアニメーション（順次登場）
+   ロゴ → Strength → 頑張る〜 → 忙しくても〜
+=========================== */
+
+/* ロゴ */
+.animate-delay-1 {
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.3s;
+}
+
+/* "Strength with softness." */
+.animate-delay-2 {
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.4s;
+}
+
+/* "頑張る腹筋〜変わる"：登場後 → 4.5秒でスライドダウン退場 */
+.animate-delay-3 {
+    opacity: 0;
+    animation:
+        fadeInUp   1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 2.2s,
+        slideDownOut 1.0s cubic-bezier(0.4, 0, 0.2, 1) forwards 4.8s;
+}
+
+/* "忙しくても〜身体へ。"：4.5秒に下からスライドイン（入れ替わり） */
+.animate-delay-4 {
+    opacity: 0;
+    transform: translateY(80px);
+    z-index: 10;
+    animation: slideUpIn 1.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 4.8s;
+}
+
+/* フェードイン+上昇（共通） */
+@keyframes fadeInUp {
+    0%   { opacity: 0; transform: translateY(24px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 下からスライドイン */
+@keyframes slideUpIn {
+    0%   { opacity: 0; transform: translateY(80px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 下へスライドしてフェードアウト */
+@keyframes slideDownOut {
+    0%   { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(60px); }
+}
+
+/* ===========================
+   ② スクロールフェードイン
+   .scroll-fade → .is-visible で浮き上がる
+=========================== */
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+        opacity  0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.scroll-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================
+   ③ ピンク・ゴールド文字の静かな光
+   .glow-reveal → .is-glowing でゆっくり光る
+=========================== */
+.glow-reveal {
+    opacity: 0;
+    transition:
+        opacity 1.4s ease,
+        color   1.4s ease,
+        text-shadow 1.4s ease;
+}
+.glow-reveal.is-glowing {
+    opacity: 1;
+}
+
+/* ピンクの光 */
+.t-pink .glow-reveal,
+span.glow-reveal.t-pink,
+.t-pink.glow-reveal {
+    color: transparent;
+}
+.t-pink .glow-reveal.is-glowing,
+span.glow-reveal.t-pink.is-glowing,
+.t-pink.glow-reveal.is-glowing {
+    color: var(--accent-pink);
+    text-shadow: 0 0 20px rgba(225, 166, 180, 0.6);
+}
+
+/* ゴールドの光 */
+.t-gold .glow-reveal,
+span.glow-reveal.t-gold,
+.t-gold.glow-reveal {
+    color: transparent;
+}
+.t-gold .glow-reveal.is-glowing,
+span.glow-reveal.t-gold.is-glowing,
+.t-gold.glow-reveal.is-glowing {
+    color: var(--accent-gold);
+    text-shadow: 0 0 20px rgba(219, 192, 158, 0.7);
 }
 
 /* ===========================
@@ -428,8 +670,8 @@ h2.section-title span.en {
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.30);
+    border-left: 1px solid rgba(255, 255, 255, 0.20);
     border-radius: 24px;
     padding: 48px 28px 36px;
     max-width: 360px;
@@ -443,30 +685,6 @@ h2.section-title span.en {
 .modal-overlay.is-open .modal-glass {
     transform: translateY(0) scale(1);
 }
-/* 忙しくても〜：下から静かにスライドして登場 */
-@keyframes slideUpIn {
-    0% {
-        opacity: 0;
-        transform: translateY(80px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* 頑張る〜：下へスライドしてフェードアウト */
-@keyframes slideDownOut {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(60px);
-    }
-}
-
 .modal-close {
     position: absolute;
     top: 14px;
@@ -474,7 +692,7 @@ h2.section-title span.en {
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.35);
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     padding: 6px 10px;
     line-height: 1;
@@ -482,6 +700,7 @@ h2.section-title span.en {
     font-family: sans-serif;
 }
 .modal-close:hover { color: rgba(255, 255, 255, 0.8); }
+
 .modal-count {
     font-size: 12px;
     color: var(--accent-pink);
@@ -507,4 +726,5 @@ h2.section-title span.en {
     font-size: 14px;
     color: var(--text-sub);
     line-height: 2.0;
+    margin-bottom: 8px;
 }

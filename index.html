@@ -404,15 +404,15 @@
                 // 1. 初期状態：操作をロック
                 document.body.classList.add('is-locked');
 
-                // 2. マジック・クロスフェード（9.5秒後）
+                // 2. マジック・クロスフェード（8.5秒後）
                 setTimeout(() => {
                     if (window.scrollY < 100) {
                         fv.classList.add('is-hidden');
                         overlay.classList.add('is-visible');
                     }
-                }, 9500);
+                }, 8500);
 
-                // 3. 操作ロック解除と裏側での「瞬間移動」（13.0秒後）
+                // 3. 操作ロック解除と裏側での「瞬間移動」（12.0秒後）
                 setTimeout(() => {
                     document.body.classList.remove('is-locked');
 
@@ -433,7 +433,7 @@
                             realImageSec.style.transition = '';
                         });
                     }
-                }, 13000);
+                }, 12000);
             });
         </script>
     </div>

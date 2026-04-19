@@ -561,21 +561,21 @@ footer {
 /* ロゴ */
 .animate-delay-1 {
     opacity: 0;
-    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.0s;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.5s;
 }
 
 /* "Strength with softness." */
 .animate-delay-2 {
     opacity: 0;
-    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 2.2s;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.5s;
 }
 
 /* "頑張る腹筋〜変わる"：登場後 → スライドダウン退場 */
 .animate-delay-3 {
     opacity: 0;
     animation:
-        fadeInUp   1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 3.5s,
-        slideDownOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 6.0s;
+        fadeInUp   1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 2.5s,
+        slideDownOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 5.0s;
 }
 
 /* "忙しくても〜身体へ。"：上と同時に入れ替わり */
@@ -583,7 +583,7 @@ footer {
     opacity: 0;
     transform: translateY(80px);
     z-index: 10;
-    animation: slideUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 6.5s;
+    animation: slideUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 5.0s;
 }
 
 /* フェードイン+上昇（共通） */
@@ -708,14 +708,14 @@ span.glow-reveal.t-gold.is-glowing,
 
 /* オーバーレイが表示されたらアニメーション開始 */
 .magic-overlay.is-visible .scroll-hint {
-    animation: scrollHintFade 1.2s ease-out forwards 0.3s;
+    animation: scrollHintFade 1.2s ease-out forwards 0.2s;
 }
 
 .scroll-text {
     font-size: 10px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.8);
     font-family: sans-serif;
 }
 
@@ -723,10 +723,10 @@ span.glow-reveal.t-gold.is-glowing,
 .scroll-arrow {
     width: 10px;
     height: 10px;
-    border-right: 1px solid rgba(255, 255, 255, 0.4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1.5px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.8);
     transform: rotate(45deg);
-    animation: scrollArrowBounce 1.2s ease-in-out 2 0.6s;
+    animation: scrollArrowBounce 1.2s ease-in-out 2 0.4s;
 }
 
 @keyframes scrollHintFade {
@@ -735,8 +735,8 @@ span.glow-reveal.t-gold.is-glowing,
 }
 
 @keyframes scrollArrowBounce {
-    0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.4; }
-    50% { transform: rotate(45deg) translate(5px, 5px); opacity: 0.8; }
+    0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.8; }
+    50% { transform: rotate(45deg) translate(8px, 8px); opacity: 1; }
 }
 
 .magic-overlay img.img-fluid {

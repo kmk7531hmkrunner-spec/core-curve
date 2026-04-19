@@ -681,18 +681,10 @@ span.glow-reveal.t-gold.is-glowing,
     opacity: 1;
 }
 
-.magic-overlay img {
-    max-width: 460px;
+.magic-overlay img.img-fluid {
     width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-}
-
-/* 次の画像セクションの自動フェードイン（スクロール前） */
-.animate-entrance-next {
-    opacity: 0;
-    animation: fadeInUp 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 8.5s;
+    margin: 0;
+    max-width: 452px; /* 500px container - 24px*2 padding */
 }
 
 /* ===========================

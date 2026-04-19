@@ -21,7 +21,7 @@
 
     <!-- マジック・クロスフェード用オーバーレイ -->
     <div class="magic-overlay">
-        <img src="bodytrainerayaka.jpg" alt="Body Designer Ayaka">
+        <img src="bodytrainerayaka.jpg" alt="Body Designer Ayaka" class="img-fluid">
     </div>
 
     <div class="container">
@@ -47,7 +47,7 @@
              Story・想い
         ======================================= -->
         <section>
-            <div class="profile-image scroll-fade animate-entrance-next">
+            <div class="profile-image scroll-fade">
                 <img src="bodytrainerayaka.jpg" alt="Body Designer Ayaka" class="img-fluid">
             </div>
             <div class="story-block scroll-fade">
@@ -346,6 +346,7 @@
                 // --- イマーシブ・エントランス管理 ---
                 const fv = document.querySelector('.fv');
                 const overlay = document.querySelector('.magic-overlay');
+                const realImageSec = document.querySelector('.profile-image');
 
                 // 1. 初期状態：操作をロック
                 document.body.classList.add('is-locked');
@@ -358,23 +359,28 @@
                     }
                 }, 8800);
 
-                // 3. 操作ロック解除（10.5秒後）
+                // 3. 操作ロック解除と裏側での「瞬間移動」（10.5秒後）
                 setTimeout(() => {
                     document.body.classList.remove('is-locked');
-                }, 10500);
 
-                // 4. スクロール連動：戻った際の再表示 & 下落時のオーバーレイ消去
-                window.addEventListener('scroll', () => {
-                    const scrollPos = window.scrollY;
-                    if (scrollPos < 50) {
-                        // 最上部に戻った場合：FVを復活させ、オーバーレイを消す
+                    if (overlay.classList.contains('is-visible')) {
+                        // チラつき防止：実体側のトランジションを一時的に切り、強制的に表示状態にする
+                        realImageSec.style.transition = 'none';
+                        realImageSec.classList.add('is-visible');
+                        
+                        // 実際の画像が見えるように、画面のスクロール位置を実体へジャンプさせる
+                        realImageSec.scrollIntoView({ behavior: 'auto', block: 'center' });
+
+                        // ジャンプした瞬間に、FVの非表示設定を解除し、ダミー画像も消去
                         fv.classList.remove('is-hidden');
-                        overlay.classList.remove('is-visible');
-                    } else if (scrollPos > 100) {
-                        // 下にスクロールした場合：オーバーレイを消し、本物のコンテンツを見せる
-                        overlay.classList.remove('is-visible');
+                        overlay.style.display = 'none';
+                        
+                        // すぐにトランジション設定を戻す
+                        requestAnimationFrame(() => {
+                            realImageSec.style.transition = '';
+                        });
                     }
-                });
+                }, 10500);
             });
         </script>
     </div>

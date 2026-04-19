@@ -44,6 +44,14 @@ body {
     line-break: strict;
     /* 最新ブラウザ(Chrome等)向け：自然な文節での改行を有効化 */
     word-break: auto-phrase;
+    /* 全デバイスで均等かつ美しい改行を目指す */
+    text-wrap: balance;
+}
+
+/* 一行表示を強制するユーティリティ */
+.u-one-wrap {
+    white-space: nowrap;
+    display: inline-block;
 }
 
 /* 操作ロック用クラス：スクロールとスワイプを無効化（高さ固定は崩れるため不使用） */
@@ -616,14 +624,31 @@ footer {
 =========================== */
 .scroll-fade {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(40px); /* 移動距離を少し長くして浮遊感を強調 */
     transition:
-        opacity  0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
-        transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        opacity  1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+        filter 1.2s ease;
 }
 .scroll-fade.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* 空白から浮かび上がる演出 */
+.emerge-reveal {
+    opacity: 0;
+    filter: blur(12px);
+    transform: scale(0.98);
+    transition: 
+        opacity 2.0s cubic-bezier(0.2, 0.8, 0.2, 1),
+        filter 2.0s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 2.0s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.emerge-reveal.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
 }
 
 /* ===========================

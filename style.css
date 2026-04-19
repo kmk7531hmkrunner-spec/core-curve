@@ -39,6 +39,12 @@ body {
     overflow-wrap: break-word;
 }
 
+/* 操作ロック用クラス */
+body.is-locked {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
 /* 見出しは均等な行長に */
 h1, h2, h3 {
     text-wrap: balance;
@@ -104,6 +110,13 @@ h2.section-title span.en {
 .fv {
     padding: 100px 0 60px;
     text-align: center;
+    transition: opacity 1.0s ease, filter 1.0s ease;
+}
+
+.fv.is-hidden {
+    opacity: 0;
+    filter: blur(10px);
+    pointer-events: none;
 }
 
 .fv-logo {
@@ -639,6 +652,39 @@ span.glow-reveal.t-gold.is-glowing,
 .t-gold.glow-reveal.is-glowing {
     color: var(--accent-gold);
     text-shadow: 0 0 20px rgba(219, 192, 158, 0.7);
+}
+
+/* ===========================
+   ④ エントランスシーケンス：FVから次セクションへの自動遷移
+=========================== */
+
+/* マジックオーバーレイ（クロスフェード用） */
+.magic-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    background: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.2s ease-in-out;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.magic-overlay.is-visible {
+    opacity: 1;
+}
+
+.magic-overlay img.img-fluid {
+    width: 100%;
+    margin: 0;
+    max-width: 452px; /* 500px container - 24px*2 padding */
 }
 
 /* ===========================

@@ -51,31 +51,21 @@
             </div>
             <div class="story-block scroll-fade">
                 <h2 class="section-title scroll-fade" style="margin-bottom:40px;"><span class="en">To You</span>「なりたかった私」を今からー。</h2>
-                <p>家族や仕事のために走り続け、<br>
-                自分のことは、いつも後回し。</p>
-                <p>ふと鏡で見つけた姿勢の崩れや、<br>
-                きつくなった服に、<br>
-                心のどこかでブレーキを感じていませんか？</p>
+                <p>家族や仕事のために走り続け、<br>自分のことは、いつも後回し。</p>
+                <p>ふと鏡で見つけた姿勢の崩れや、きつくなった服に、<br>心のどこかでブレーキを感じていませんか？</p>
             </div>
 
             <div class="monologue scroll-fade">
-                「このまま、お母さんとしてだけ<br>
-                年齢を重ねていくのかな…」<br><br>
-                心の底に隠した “女性としての自分” を、<br>
-                もう一度、取り戻しませんか？
+                「このまま、お母さんとしてだけ<br>年齢を重ねていくのかな…」<br><br>
+                心の底に隠した “女性としての自分” を、<br>もう一度、取り戻しませんか？
             </div>
 
             <div class="story-block scroll-fade">
-                <p>疲れやすいのは、年齢のせいではなく、<br>
-                すべてを一人で抱え込んでいるから。<br><br>
-                <span class="t-gold glow-reveal" style="font-size:18px;">あなたの身体は、あなただけのものじゃない。</span><br>
-                子供に心からの笑顔を向けるために。<br>
-                家族とずっと健康に過ごすために。<br>
-                そして、あなた自身が「自分」らしく、<br>
-                もっと輝くために。</p>
+                <p>疲れやすいのは、年齢のせいではなく、<br>すべてを一人で抱え込んでいるから。</p>
+                <p><span class="t-gold glow-reveal" style="font-size:18px;">あなたの身体は、あなただけのものじゃない。</span></p>
+                <p>子供に心からの笑顔を向けるために。<br>家族とずっと健康に過ごすために。<br>そして、あなた自身が「自分」らしく、<br>もっと輝くために。</p>
 
-                <p>自分を後回しにする日々を、<br>
-                今日で終わりにしましょう。</p>
+                <p>自分を後回しにする日々を、<br>今日で終わりにしましょう。</p>
             </div>
         </section>
 
@@ -88,20 +78,11 @@
                 <img src="優勝2.png" alt="大会優勝" class="img-fluid">
             </div>
             <div class="story-block scroll-fade">
-                <p>はじめまして、<br></p>
-                <p>ayakaです、<br></p>
-                <p>私自身、三兄弟の出産後に体は激変。<br>
-                「どうしてこの体は壊れていくの？」と<br>
-                絶望すら感じる日々を送っていました。</p>
-                <p>時間のないママに、<br>
-                激しい運動や食事制限なんて無理。<br>
-                私もそうでした。</p>
-                <p>だからこそ、<br>
-                きつい我慢ではなく、<br></p>
-                <p>「1日たった5分の、自分を感じて整える時間」<br></p>
-                <p>から始めました。</p>
-                <p>その小さな聖域が、<br>
-                やがて心と身体を変える大きな力になったのです。</p>
+                <p>はじめまして、<br>ayakaです。</p>
+                <p>私自身、三兄弟の出産後に体は激変。<br>「どうしてこの体は壊れていくの？」と<br>絶望すら感じる日々を送っていました。</p>
+                <p>時間のないママに、<br>激しい運動や食事制限なんて無理。<br>私もそうでした。</p>
+                <p>だからこそ、きつい我慢ではなく、<br>「1日たった5分の、自分を感じて整える時間」<br>から始めました。</p>
+                <p>その小さな聖域が、<br>やがて心と身体を変える大きな力になったのです。</p>
             </div>
 
             <!-- Detailed Customer Reviews -->
@@ -393,6 +374,26 @@
                 setTimeout(() => {
                     document.body.classList.remove('is-locked');
                 }, 6000);
+
+                // スクロールエフェクトが見えなくなるまでスクロールしたら完全に消去する（再表示しない）
+                const scrollHint = document.querySelector('.scroll-hint');
+                if (scrollHint) {
+                    const hideHintObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (!entry.isIntersecting && window.scrollY > 100) {
+                                // 完全に画面外に出たらディスレイをnoneにして再配置させない
+                                scrollHint.style.display = 'none';
+                                hideHintObserver.disconnect();
+                            }
+                        });
+                    }, { threshold: 0 }); // 要素が見えなくなった瞬間に発火
+
+                    // ロック解除後に監視開始（最初に非表示判定されるのを防ぐ）
+                    setTimeout(() => {
+                        hideHintObserver.observe(scrollHint);
+                    }, 6500);
+                }
+
 
             });
         </script>

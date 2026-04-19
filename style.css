@@ -46,7 +46,11 @@ body {
     word-break: auto-phrase;
 }
 
-/* 操作ロック機能は廃止（自然なスクロールに委ねる） */
+/* 操作ロック用クラス：スクロールとスワイプを無効化（高さ固定は崩れるため不使用） */
+body.is-locked {
+    overflow: hidden !important;
+    touch-action: none;
+}
 
 /* 見出しは均等な行長に */
 h1, h2, h3 {

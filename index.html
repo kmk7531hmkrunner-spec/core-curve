@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="is-locked">
 
     <!-- ふんわりした光の演出 -->
     <div class="light-effect"></div>
@@ -388,6 +388,11 @@
                 }, { rootMargin: '0px 0px -40% 0px', threshold: 0 });
 
                 glowEls.forEach(el => glowObserver.observe(el));
+
+                // エントランスエフェクト終了時（約6秒後）にスクロールロックを解除
+                setTimeout(() => {
+                    document.body.classList.remove('is-locked');
+                }, 6000);
 
             });
         </script>

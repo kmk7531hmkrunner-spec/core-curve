@@ -97,6 +97,7 @@ p, li {
 .future-glow {
     position: relative;
     display: inline-block;
+    overflow: hidden;
 }
 
 .future-glow .glow-text {
@@ -105,13 +106,14 @@ p, li {
     color: var(--accent-pink);
     text-shadow: 0 0 10px rgba(225, 166, 180, 0.5);
     animation: futureGlow 3s ease-in-out infinite;
+    will-change: transform, text-shadow;
 }
 
 .future-glow::after {
     content: "";
     position: absolute;
     top: 0;
-    left: -150%;
+    left: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(
@@ -120,21 +122,26 @@ p, li {
         rgba(255, 255, 255, 0.6),
         transparent
     );
-    transform: skewX(-25deg);
+    transform: skewX(-25deg) translateX(-150%);
     animation: textShine 4s infinite 1s; /* 少し遅らせて開始 */
     z-index: 3;
     pointer-events: none;
+    will-change: transform;
 }
 
 @keyframes futureGlow {
-    0%, 100% { text-shadow: 0 0 10px rgba(225, 166, 180, 0.5), 0 0 20px rgba(255, 255, 255, 0.2); transform: scale(1); }
-    50% { text-shadow: 0 0 20px rgba(225, 166, 180, 1), 0 0 35px rgba(255, 255, 255, 0.5); transform: scale(1.03); }
+    0%, 100% { 
+        text-shadow: 0 0 10px rgba(225, 166, 180, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+    50% { 
+        text-shadow: 0 0 25px rgba(225, 166, 180, 1), 0 0 40px rgba(255, 255, 255, 0.6);
+    }
 }
 
 @keyframes textShine {
-    0% { left: -150%; }
-    30% { left: 150%; }
-    100% { left: 150%; }
+    0% { transform: skewX(-25deg) translateX(-150%); }
+    30% { transform: skewX(-25deg) translateX(150%); }
+    100% { transform: skewX(-25deg) translateX(150%); }
 }
 
 .container {

@@ -415,25 +415,25 @@
                 // 3. 操作ロック解除と裏側での「瞬間移動」（12.0秒後）
                 setTimeout(() => {
                     if (overlay.classList.contains('is-visible')) {
-                        // 1. 裏側で実体画像を表示状態にし、位置を合わせる
+                        // 1. 裏側で実体画像を「即時」表示状態にし、ジャンプ
                         realImageSec.style.transition = 'none';
                         realImageSec.classList.add('is-visible');
                         
-                        // 位置ジャンプ（この時点ではまだオーバーレイが不透明なので見えない）
+                        // 位置ジャンプ：この時点ではオーバーレイが不透明なので視認不可
                         realImageSec.scrollIntoView({ behavior: 'auto', block: 'center' });
 
-                        // 2. ロックを解除
+                        // 2. ロックを解除（height:100vhを外したのでガタつかない）
                         document.body.classList.remove('is-locked');
                         fv.classList.remove('is-hidden');
 
-                        // 3. オーバーレイをフワッと消して、実体を見せる
+                        // 3. オーバーレイをフワッと消して「接続」を完了
                         overlay.classList.add('is-fading-out');
 
-                        // 4. アニメーション完了後に要素を完全に消去
+                        // 4. アニメーション完了後にクリーンアップ
                         setTimeout(() => {
                             overlay.style.display = 'none';
                             realImageSec.style.transition = '';
-                        }, 800);
+                        }, 1000);
                     }
                 }, 12000);
             });

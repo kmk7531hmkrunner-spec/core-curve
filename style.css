@@ -49,7 +49,7 @@ body {
 /* 操作ロック用クラス */
 body.is-locked {
     overflow: hidden !important;
-    height: 100vh !important;
+    /* height: 100vh !important; を削除：解除時のガタつき防止 */
 }
 
 /* 見出しは均等な行長に */
@@ -671,7 +671,7 @@ span.glow-reveal.t-gold.is-glowing,
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -680,7 +680,6 @@ span.glow-reveal.t-gold.is-glowing,
     opacity: 0;
     pointer-events: none;
     transition: opacity 1.2s ease-in-out;
-    padding: 24px;
     box-sizing: border-box;
 }
 
@@ -698,7 +697,8 @@ span.glow-reveal.t-gold.is-glowing,
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 452px;
+    max-width: 500px; /* .container と一致 */
+    padding: 0 24px;      /* .container のパディングと一致 */
 }
 
 /* スクロール誘導のスタイル */

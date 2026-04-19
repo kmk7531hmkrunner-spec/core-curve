@@ -561,29 +561,29 @@ footer {
 /* ロゴ */
 .animate-delay-1 {
     opacity: 0;
-    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.3s;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
 }
 
 /* "Strength with softness." */
 .animate-delay-2 {
     opacity: 0;
-    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.4s;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.6s;
 }
 
-/* "頑張る腹筋〜変わる"：登場後 → 4.5秒でスライドダウン退場 */
+/* "頑張る腹筋〜変わる"：登場後 → スライドダウン退場 */
 .animate-delay-3 {
     opacity: 0;
     animation:
-        fadeInUp   1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 2.2s,
-        slideDownOut 1.0s cubic-bezier(0.4, 0, 0.2, 1) forwards 4.8s;
+        fadeInUp   1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.2s,
+        slideDownOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 3.2s;
 }
 
-/* "忙しくても〜身体へ。"：4.5秒に下からスライドイン（入れ替わり） */
+/* "忙しくても〜身体へ。"：上と同時に入れ替わり */
 .animate-delay-4 {
     opacity: 0;
     transform: translateY(80px);
     z-index: 10;
-    animation: slideUpIn 1.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 4.8s;
+    animation: slideUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 3.2s;
 }
 
 /* フェードイン+上昇（共通） */

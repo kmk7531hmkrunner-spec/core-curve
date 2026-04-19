@@ -51,7 +51,7 @@
                 <img src="bodytrainerayaka2.png" alt="Body Designer Ayaka" class="img-fluid">
             </div>
             <div class="story-block scroll-fade">
-                <h2 class="section-title scroll-fade" style="margin-bottom:40px;"><span class="en">To You</span>「本当は、諦めきれていないあなたへ。」</h2>
+                <h2 class="section-title scroll-fade" style="margin-bottom:40px;"><span class="en">To You</span>「なりたかった私」を今からー。</h2>
                 <p>家族や仕事のために走り続け、<br>
                 自分のことは、いつも後回し。</p>
                 <p>ふと鏡で見つけた姿勢の崩れや、<br>
@@ -89,8 +89,8 @@
                 <img src="優勝2.png" alt="大会優勝" class="img-fluid">
             </div>
             <div class="story-block scroll-fade">
-                <p>はじめまして、<br>
-                Ayakaです。<br></p>
+                <p>はじめまして、<br></p>
+                <p>ayakaです、<br></p>
                 <p>私自身、三兄弟の出産後に体は激変。<br>
                 「どうしてこの体は壊れていくの？」と<br>
                 絶望すら感じる日々を送っていました。</p>
@@ -98,9 +98,9 @@
                 激しい運動や食事制限なんて無理。<br>
                 私もそうでした。</p>
                 <p>だからこそ、<br>
-                きつい我慢ではなく、<br>
-                「1日たった5分の、自分を感じて整える時間」<br>
-                から始めました。</p>
+                きつい我慢ではなく、<br></p>
+                <p>「1日たった5分の、自分を感じて整える時間」<br></p>
+                <p>から始めました。</p>
                 <p>その小さな聖域が、<br>
                 やがて心と身体を変える大きな力になったのです。</p>
             </div>
@@ -350,7 +350,7 @@
                         </svg>
                     </a>
 
-                    <a href="https://note.com/" target="_blank" class="sns-circle" title="note">
+                    <a href="https://note.com/grace_by_ayaka" target="_blank" class="sns-circle" title="note">
                         <span
                             style="font-size: 16px; font-weight: 900; font-family: Helvetica, Arial, sans-serif; letter-spacing: -0.5px;">note</span>
                     </a>
@@ -398,15 +398,15 @@
                 // 1. 初期状態：操作をロック
                 document.body.classList.add('is-locked');
 
-                // 2. マジック・クロスフェード（8.8秒後）
+                // 2. マジック・クロスフェード（4.5秒後）
                 setTimeout(() => {
                     if (window.scrollY < 100) {
                         fv.classList.add('is-hidden');
                         overlay.classList.add('is-visible');
                     }
-                }, 8800);
+                }, 4500);
 
-                // 3. 操作ロック解除と裏側での「瞬間移動」（10.5秒後）
+                // 3. 操作ロック解除と裏側での「瞬間移動」（6.0秒後）
                 setTimeout(() => {
                     document.body.classList.remove('is-locked');
 
@@ -427,7 +427,7 @@
                             realImageSec.style.transition = '';
                         });
                     }
-                }, 10500);
+                }, 6000);
             });
         </script>
     </div>

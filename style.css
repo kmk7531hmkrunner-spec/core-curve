@@ -688,10 +688,60 @@ span.glow-reveal.t-gold.is-glowing,
     opacity: 1;
 }
 
+.magic-overlay-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 452px;
+}
+
+/* スクロール誘導のスタイル */
+.scroll-hint {
+    opacity: 0;
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* オーバーレイが表示されたらアニメーション開始 */
+.magic-overlay.is-visible .scroll-hint {
+    animation: scrollHintFade 1.2s ease-out forwards 0.5s;
+}
+
+.scroll-text {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: sans-serif;
+}
+
+/* 細い下矢印 (V型) */
+.scroll-arrow {
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    transform: rotate(45deg);
+    animation: scrollArrowBounce 1.2s ease-in-out 2 0.8s;
+}
+
+@keyframes scrollHintFade {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollArrowBounce {
+    0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.4; }
+    50% { transform: rotate(45deg) translate(5px, 5px); opacity: 0.8; }
+}
+
 .magic-overlay img.img-fluid {
     width: 100%;
     margin: 0;
-    max-width: 452px; /* 500px container - 24px*2 padding */
 }
 
 /* ===========================

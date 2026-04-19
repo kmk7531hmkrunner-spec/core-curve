@@ -34,9 +34,16 @@ body {
     letter-spacing: 0.12em;
     text-align: center;
     -webkit-font-smoothing: antialiased;
-    /* 意味のまとまりで折り返し */
+
+    /* --- 端末ごとの綺麗な改行設定（意味のまとまりで折り返す） --- */
+    /* 基本は単語の途中で改行しない（CJK向け） */
     word-break: keep-all;
-    overflow-wrap: break-word;
+    /* ただし、画面幅に収まらない場合に限り折り返す（レイアウト崩れ防止） */
+    overflow-wrap: anywhere;
+    /* 句読点が行頭に来るのを防ぐ */
+    line-break: strict;
+    /* 最新ブラウザ(Chrome等)向け：自然な文節での改行を有効化 */
+    word-break: auto-phrase;
 }
 
 /* 操作ロック用クラス */

@@ -688,6 +688,11 @@ span.glow-reveal.t-gold.is-glowing,
     opacity: 1;
 }
 
+.magic-overlay.is-fading-out {
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
+}
+
 .magic-overlay-inner {
     display: flex;
     flex-direction: column;
@@ -726,7 +731,7 @@ span.glow-reveal.t-gold.is-glowing,
     border-right: 1.5px solid rgba(255, 255, 255, 0.8);
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.8);
     transform: rotate(45deg);
-    animation: scrollArrowBounce 1.2s ease-in-out 2 0.4s;
+    animation: scrollArrowBounce 1.2s ease-in-out 3 0.4s;
 }
 
 @keyframes scrollHintFade {

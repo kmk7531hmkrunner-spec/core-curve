@@ -414,24 +414,26 @@
 
                 // 3. 操作ロック解除と裏側での「瞬間移動」（12.0秒後）
                 setTimeout(() => {
-                    document.body.classList.remove('is-locked');
-
                     if (overlay.classList.contains('is-visible')) {
-                        // チラつき防止：実体側のトランジションを一時的に切り、強制的に表示状態にする
+                        // 1. 裏側で実体画像を表示状態にし、位置を合わせる
                         realImageSec.style.transition = 'none';
                         realImageSec.classList.add('is-visible');
                         
-                        // 実際の画像が見えるように、画面のスクロール位置を実体へジャンプさせる
+                        // 位置ジャンプ（この時点ではまだオーバーレイが不透明なので見えない）
                         realImageSec.scrollIntoView({ behavior: 'auto', block: 'center' });
 
-                        // ジャンプした瞬間に、FVの非表示設定を解除し、ダミー画像も消去
+                        // 2. ロックを解除
+                        document.body.classList.remove('is-locked');
                         fv.classList.remove('is-hidden');
-                        overlay.style.display = 'none';
-                        
-                        // すぐにトランジション設定を戻す
-                        requestAnimationFrame(() => {
+
+                        // 3. オーバーレイをフワッと消して、実体を見せる
+                        overlay.classList.add('is-fading-out');
+
+                        // 4. アニメーション完了後に要素を完全に消去
+                        setTimeout(() => {
+                            overlay.style.display = 'none';
                             realImageSec.style.transition = '';
-                        });
+                        }, 800);
                     }
                 }, 12000);
             });

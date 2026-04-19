@@ -150,7 +150,10 @@
 
             <!-- 移動された診断セクション -->
             <div id="relocated-diagnosis" style="margin: 40px 0;">
-                <h2 class="section-title scroll-fade" style="margin-bottom: 30px;"><span class="en">Diagnosis</span>Bikini Body診断（無料）</h2>
+                <h2 class="section-title scroll-fade" style="margin-bottom: 10px;"><span class="en">Diagnosis</span>Bikini Body診断（無料）</h2>
+                <p class="scroll-fade" style="text-align:center; font-size:14px; margin-bottom:30px;">
+                    自分の身体をチェックしてみましょう
+                </p>
                 <div class="checklist-box scroll-fade">
                     <div class="corner top-left"></div>
                     <div class="corner top-right"></div>
@@ -301,13 +304,18 @@
             </div>
 
             <div class="scroll-fade" style="max-width: 320px; margin: 40px auto 20px;">
-                <!-- 新しいLINE誘導ボックス -->
+                <!-- 感情的なメッセージの強調 -->
+                <p class="t-pink" style="font-size: 18px; font-weight: bold; line-height: 1.8; margin-bottom: 32px; text-shadow: 0 0 10px var(--glow-pink);">
+                    諦めてしまったこと、<br>
+                    言えなかった悩み、夢、<br>
+                    私に全部話してください
+                </p>
+
+                <!-- 独立した公式LINEボックス -->
                 <div class="glass-panel"
-                    style="padding: 32px 24px; text-align: center; margin-bottom: 32px; border-radius: 16px;">
-                    <p style="font-size: 16px; font-weight: 500; line-height: 1.8; margin-bottom: 24px;">
-                        気になること、<br>お話してみませんか？</p>
+                    style="padding: 32px 24px; text-align: center; margin-bottom: 32px; border-radius: 16px; border: 1px solid var(--accent-pink);">
+                    <p style="font-size: 14px; margin-bottom: 20px; color: var(--text-sub);">公式LINEでの直接相談はこちら</p>
                     <a href="https://lin.ee/cWn1rMJa" target="_blank" class="btn-line-full">
-                        <!-- LINE Official Logo Path -->
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                             <path
                                 d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.058.592.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.967 1.739-1.907 2.547-3.832 2.547-5.978zm-15.358 3.12h-4.041c-.443 0-.804-.36-.804-.803v-4.032c0-.442.361-.803.804-.803h1.22c.442 0 .803.361.803.803v2.012h2.018c.442 0 .804.361.804.803v1.218c0 .442-.362.802-.804.802zm3.328 0h-1.22c-.443 0-.804-.36-.804-.803v-4.032c0-.442.361-.803.804-.803h1.22c.442 0 .803.361.803.803v4.032c0 .442-.361.802-.803.802zm4.331 0h-1.077c-.503 0-.895-.444-.895-.947v-4.086c0-.443.36-.803.804-.803h1.22c.442 0 .803.361.803.803v4.23l2.585-4.57c.228-.403.654-.664 1.116-.664h1.077c.502 0 .895.444.895.947v4.086c0 .442-.361.802-.804.802h-1.22c-.442 0-.803-.36-.803-.803v-4.229l-2.585 4.568c-.229.404-.654.665-1.116.665z" />
@@ -474,7 +482,7 @@
                 const data = reviewData[id];
                 document.getElementById('modal-count').textContent = '✔ PROGRAM REVIEW';
                 const typeEl = document.getElementById('modal-type');
-                typeEl.textContent = data.type;
+                typeEl.innerHTML = data.type; // HTMLとして埋め込み（改行対応）
                 typeEl.style.color = 'var(--accent-pink)';
                 document.getElementById('modal-label').textContent = data.label;
                 document.getElementById('modal-desc').innerHTML = data.desc; // HTMLとして埋め込み
@@ -489,7 +497,7 @@
             function openModal(data, count) {
                 document.getElementById('modal-count').textContent = '✔ YES ' + count + '個';
                 const typeEl = document.getElementById('modal-type');
-                typeEl.textContent = data.type;
+                typeEl.innerHTML = data.type; // HTMLとして埋め込み（改行対応）
                 typeEl.style.color = data.color;
                 document.getElementById('modal-label').textContent = data.label;
                 document.getElementById('modal-desc').innerHTML = data.desc;

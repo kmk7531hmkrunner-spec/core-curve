@@ -93,6 +93,50 @@ p, li {
     z-index: 0;
 }
 
+/* 未来を感じさせる輝きのエフェクト */
+.future-glow {
+    position: relative;
+    display: inline-block;
+}
+
+.future-glow .glow-text {
+    position: relative;
+    z-index: 2;
+    color: var(--accent-pink);
+    text-shadow: 0 0 10px rgba(225, 166, 180, 0.5);
+    animation: futureGlow 3s ease-in-out infinite;
+}
+
+.future-glow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.6),
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: textShine 4s infinite 1s; /* 少し遅らせて開始 */
+    z-index: 3;
+    pointer-events: none;
+}
+
+@keyframes futureGlow {
+    0%, 100% { text-shadow: 0 0 10px rgba(225, 166, 180, 0.5), 0 0 20px rgba(255, 255, 255, 0.2); transform: scale(1); }
+    50% { text-shadow: 0 0 20px rgba(225, 166, 180, 1), 0 0 35px rgba(255, 255, 255, 0.5); transform: scale(1.03); }
+}
+
+@keyframes textShine {
+    0% { left: -150%; }
+    30% { left: 150%; }
+    100% { left: 150%; }
+}
+
 .container {
     position: relative;
     z-index: 1;

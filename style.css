@@ -46,11 +46,7 @@ body {
     word-break: auto-phrase;
 }
 
-/* 操作ロック用クラス */
-body.is-locked {
-    overflow: hidden !important;
-    /* height: 100vh !important; を削除：解除時のガタつき防止 */
-}
+/* 操作ロック機能は廃止（自然なスクロールに委ねる） */
 
 /* 見出しは均等な行長に */
 h1, h2, h3 {
@@ -586,6 +582,12 @@ footer {
     animation: slideUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 5.0s;
 }
 
+/* スクロール誘導（矢印） */
+.animate-delay-5 {
+    opacity: 0;
+    animation: scrollHintFade 1.2s ease-out forwards 6.0s;
+}
+
 /* フェードイン+上昇（共通） */
 @keyframes fadeInUp {
     0%   { opacity: 0; transform: translateY(24px); }
@@ -662,58 +664,15 @@ span.glow-reveal.t-gold.is-glowing,
 }
 
 /* ===========================
-   ④ エントランスシーケンス：FVから次セクションへの自動遷移
+   ④ スクロール誘導のスタイル
 =========================== */
-
-/* マジックオーバーレイ（クロスフェード用） */
-.magic-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 500;
-    background: transparent;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 1.2s ease-in-out;
-    box-sizing: border-box;
-}
-
-.magic-overlay.is-visible {
-    opacity: 1;
-}
-
-.magic-overlay.is-fading-out {
-    opacity: 0;
-    transition: opacity 0.8s ease-out;
-}
-
-.magic-overlay-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 500px; /* .container と一致 */
-    padding: 0 24px;      /* .container のパディングと一致 */
-}
-
-/* スクロール誘導のスタイル */
 .scroll-hint {
-    opacity: 0;
-    margin-top: -10px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-}
-
-/* オーバーレイが表示されたらアニメーション開始 */
-.magic-overlay.is-visible .scroll-hint {
-    animation: scrollHintFade 1.2s ease-out forwards 0.2s;
+    /* initial opacity handled by animate-delay-5 */
 }
 
 .scroll-text {
@@ -731,7 +690,10 @@ span.glow-reveal.t-gold.is-glowing,
     border-right: 1.5px solid rgba(255, 255, 255, 0.8);
     border-bottom: 1.5px solid rgba(255, 255, 255, 0.8);
     transform: rotate(45deg);
-    animation: scrollArrowBounce 1.2s ease-in-out 3 0.4s;
+    /* animate-delay-5 の表示タイミングと辻褄を合わせる（6.0s + 0.4s） */
+    animation: scrollArrowBounce 1.2s ease-in-out 3 6.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 
 @keyframes scrollHintFade {
@@ -742,11 +704,6 @@ span.glow-reveal.t-gold.is-glowing,
 @keyframes scrollArrowBounce {
     0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.8; }
     50% { transform: rotate(45deg) translate(8px, 8px); opacity: 1; }
-}
-
-.magic-overlay img.img-fluid {
-    width: 100%;
-    margin: 0;
 }
 
 /* ===========================

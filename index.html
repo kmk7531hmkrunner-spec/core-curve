@@ -19,22 +19,9 @@
     <!-- ふんわりした光の演出 -->
     <div class="light-effect"></div>
 
-    <!-- マジック・クロスフェード用オーバーレイ -->
-    <div class="magic-overlay">
-        <div class="magic-overlay-inner">
-            <img src="bodytrainerayaka2.png" alt="Body Designer Ayaka" class="img-fluid">
-            <div class="scroll-hint">
-                <span class="scroll-text">Scroll</span>
-                <div class="scroll-arrow"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-
-        <!-- =======================================
-             FV (First View)
-        ======================================= -->
+    <!-- =======================================
+         FV (First View)
+    ======================================= -->
         <section class="fv">
             <img src="logo_trimmed.png" alt="Core & Curve" class="fv-logo-img animate-delay-1">
             <div class="fv-logo" style="display: none;">Core & Curve</div>
@@ -46,6 +33,11 @@
                     <span style="font-size: 20px; line-height: 2;">整えるだけで<br>女性の身体は変わる</span>
                 </h1>
                 <p class="t-pink fv-main-copy animate-delay-4">忙しくても<br><br>私史上最高の身体へ。</p>
+                
+                <div class="scroll-hint animate-delay-5">
+                    <span class="scroll-text">Scroll</span>
+                    <div class="scroll-arrow"></div>
+                </div>
             </div>
         </section>
 
@@ -53,7 +45,7 @@
              Empathy (Psychological Focus)
         ======================================= -->
         <section>
-            <div class="profile-image scroll-fade">
+            <div class="profile-image scroll-fade" style="margin-bottom: 50px;">
                 <img src="bodytrainerayaka2.png" alt="Body Designer Ayaka" class="img-fluid">
             </div>
             <div class="story-block scroll-fade">
@@ -396,46 +388,6 @@
 
                 glowEls.forEach(el => glowObserver.observe(el));
 
-                // --- イマーシブ・エントランス管理 ---
-                const fv = document.querySelector('.fv');
-                const overlay = document.querySelector('.magic-overlay');
-                const realImageSec = document.querySelector('.profile-image');
-
-                // 1. 初期状態：操作をロック
-                document.body.classList.add('is-locked');
-
-                // 2. マジック・クロスフェード（8.5秒後）
-                setTimeout(() => {
-                    if (window.scrollY < 100) {
-                        fv.classList.add('is-hidden');
-                        overlay.classList.add('is-visible');
-                    }
-                }, 8500);
-
-                // 3. 操作ロック解除と裏側での「瞬間移動」（12.0秒後）
-                setTimeout(() => {
-                    if (overlay.classList.contains('is-visible')) {
-                        // 1. 裏側で実体画像を「即時」表示状態にし、ジャンプ
-                        realImageSec.style.transition = 'none';
-                        realImageSec.classList.add('is-visible');
-                        
-                        // 位置ジャンプ：この時点ではオーバーレイが不透明なので視認不可
-                        realImageSec.scrollIntoView({ behavior: 'auto', block: 'center' });
-
-                        // 2. ロックを解除（height:100vhを外したのでガタつかない）
-                        document.body.classList.remove('is-locked');
-                        fv.classList.remove('is-hidden');
-
-                        // 3. オーバーレイをフワッと消して「接続」を完了
-                        overlay.classList.add('is-fading-out');
-
-                        // 4. アニメーション完了後にクリーンアップ
-                        setTimeout(() => {
-                            overlay.style.display = 'none';
-                            realImageSec.style.transition = '';
-                        }, 1000);
-                    }
-                }, 12000);
             });
         </script>
     </div>

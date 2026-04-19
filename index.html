@@ -434,17 +434,39 @@
                 }
             };
 
-            // レビューの生データ定義（モーダル表示用）
+            // レビューの生データ定義（モーダル表示用：詳細を完全に保持）
             const reviewData = {
                 'y-sama': {
-                    type: 'Y様（産職6週間受講）',
+                    type: 'Y様（産後6週間チャレンジ受講）',
                     label: '「洋服にゆとりができました！」',
-                    desc: `【Q】決め手は？<br>自宅で受けれる点や不調に合わせた指導が魅力でした。<br><br>【Q】変化は？<br>体が軽くなり、洋服にゆとりが！<br><br>【成果】<br>体重 -2kg / ウエスト -3cm / 腕・脚なども改善`
+                    desc: `<div style="text-align:left; font-size:14px; line-height:1.8;">
+                            <p style="margin-bottom:15px;"><span class="t-gold" style="font-weight:bold;">Q. 受講の決め手は？</span><br>自宅で受けれる点や、身体の不調に合わせて指導して頂けるのが魅力でした。</p>
+                            <p style="margin-bottom:15px;"><span class="t-gold" style="font-weight:bold;">Q. 身体の変化はありましたか？</span><br>身体が軽くなった感じがして、<span class="t-pink">洋服にも少しゆとりができました！</span></p>
+                            <p style="margin-bottom:15px;"><span class="t-gold" style="font-weight:bold;">Q. 内容は続けやすかったですか？</span><br>難しい動きはなかったので、空いた時間に続けています。</p>
+                            <div style="margin-top:20px; font-style:italic; border-left: 2px solid var(--accent-gold); padding-left:10px; background:rgba(255,255,255,0.03); padding:10px;">
+                                「にこにこ笑顔がかわいくて、毎週楽しかったです！運動音痴な私にもわかりやすく説明して貰えました」
+                            </div>
+                            <div style="margin-top:20px; padding:15px; font-size:14px; background: rgba(219, 192, 158, 0.1); border-radius:10px;">
+                                体重 <span class="t-gold">-2kg</span> / 二の腕 <span class="t-gold">-3.2cm</span> / ウエスト <span class="t-gold">-3cm</span><br>
+                                下腹・ヒップ・太もも <span class="t-pink" style="font-weight:bold;">すべて -4.5cm</span>
+                            </div>
+                          </div>`
                 },
                 'a-sama': {
-                    type: 'A様（産職6週間受講）',
+                    type: 'A様（産後6週間チャレンジ受講）',
                     label: '「自転車をこぐ時も意識が変わりました」',
-                    desc: `【Q】感想は？<br>気になる部分に合わせたプログラムが良かったです。<br><br>【Q】変化は？<br>日常の動作でも筋肉を意識するように。姿勢も改善！<br><br>【成果】<br>体脂肪率 -3.2% / 二の腕・太もも -1.7cm`
+                    desc: `<div style="text-align:left; font-size:14px; line-height:1.8;">
+                            <p style="margin-bottom:15px;"><span class="t-gold" style="font-weight:bold;">Q. 受講してみての感想は？</span><br>自分の気になる部分や体調に合わせたプログラムを組んでもらえたのが良かったです。</p>
+                            <p style="margin-bottom:15px;"><span class="t-gold" style="font-weight:bold;">Q. 意識の変化はありましたか？</span><br>自転車をこいだり散歩するときも、<span class="t-pink">どこを動かしているのか意識するように</span>なりました！姿勢も気を付けています。</p>
+                            <p style="margin-bottom:15px;"><span class="t-gold" style="font-weight:bold;">Q. 続けられそうですか？</span><br>続けたいです！子供がいても自宅でできるのはすごく嬉しいです。</p>
+                            <div style="margin-top:20px; font-style:italic; border-left: 2px solid var(--accent-pink); padding-left:10px; background:rgba(255,255,255,0.03); padding:10px;">
+                                「同じママさんなのでお話しやすく、忘れてしまった時も繰り返し丁寧に教えていただけてありがたかったです」
+                            </div>
+                            <div style="margin-top:20px; padding:15px; font-size:14px; background: rgba(225, 166, 180, 0.1); border-radius:10px;">
+                                体脂肪率 <span class="t-pink">-3.2%</span><br>
+                                二の腕・太もも <span class="t-gold">-1.7cm</span>
+                            </div>
+                          </div>`
                 }
             };
 

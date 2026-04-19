@@ -561,21 +561,21 @@ footer {
 /* ロゴ */
 .animate-delay-1 {
     opacity: 0;
-    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.8s;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.0s;
 }
 
 /* "Strength with softness." */
 .animate-delay-2 {
     opacity: 0;
-    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.2s;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 2.2s;
 }
 
 /* "頑張る腹筋〜変わる"：登場後 → スライドダウン退場 */
 .animate-delay-3 {
     opacity: 0;
     animation:
-        fadeInUp   1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 1.8s,
-        slideDownOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 3.8s;
+        fadeInUp   1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 3.5s,
+        slideDownOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards 6.0s;
 }
 
 /* "忙しくても〜身体へ。"：上と同時に入れ替わり */
@@ -583,7 +583,7 @@ footer {
     opacity: 0;
     transform: translateY(80px);
     z-index: 10;
-    animation: slideUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 3.8s;
+    animation: slideUpIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 6.5s;
 }
 
 /* フェードイン+上昇（共通） */
@@ -708,7 +708,7 @@ span.glow-reveal.t-gold.is-glowing,
 
 /* オーバーレイが表示されたらアニメーション開始 */
 .magic-overlay.is-visible .scroll-hint {
-    animation: scrollHintFade 1.2s ease-out forwards 1.1s;
+    animation: scrollHintFade 1.2s ease-out forwards 0.3s;
 }
 
 .scroll-text {
@@ -726,7 +726,7 @@ span.glow-reveal.t-gold.is-glowing,
     border-right: 1px solid rgba(255, 255, 255, 0.4);
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     transform: rotate(45deg);
-    animation: scrollArrowBounce 1.2s ease-in-out 2 1.4s;
+    animation: scrollArrowBounce 1.2s ease-in-out 2 0.6s;
 }
 
 @keyframes scrollHintFade {

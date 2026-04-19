@@ -44,14 +44,6 @@ body {
     line-break: strict;
     /* 最新ブラウザ(Chrome等)向け：自然な文節での改行を有効化 */
     word-break: auto-phrase;
-    /* 全デバイスで均等かつ美しい改行を目指す */
-    text-wrap: balance;
-}
-
-/* 一行表示を強制するユーティリティ */
-.u-one-wrap {
-    white-space: nowrap;
-    display: inline-block;
 }
 
 /* 操作ロック用クラス：スクロールとスワイプを無効化（高さ固定は崩れるため不使用） */
@@ -68,6 +60,15 @@ h1, h2, h3 {
 /* 本文は語の意味で折り返し */
 p, li {
     text-wrap: pretty;
+}
+
+/* 一行固定（スマホでも文字サイズを調整して収める） */
+.u-one-line {
+    white-space: nowrap;
+    display: inline-block;
+    max-width: 100%;
+    /* 非常に狭い画面では自動的に少し縮小（コンテナに合わせる） */
+    font-size: clamp(14px, 5vw, 20px) !important;
 }
 
 /* 背景光エフェクト */
@@ -624,31 +625,14 @@ footer {
 =========================== */
 .scroll-fade {
     opacity: 0;
-    transform: translateY(40px); /* 移動距離を少し長くして浮遊感を強調 */
+    transform: translateY(32px);
     transition:
-        opacity  1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
-        transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
-        filter 1.2s ease;
+        opacity  0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .scroll-fade.is-visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* 空白から浮かび上がる演出 */
-.emerge-reveal {
-    opacity: 0;
-    filter: blur(12px);
-    transform: scale(0.98);
-    transition: 
-        opacity 2.0s cubic-bezier(0.2, 0.8, 0.2, 1),
-        filter 2.0s cubic-bezier(0.2, 0.8, 0.2, 1),
-        transform 2.0s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.emerge-reveal.is-visible {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
 }
 
 /* ===========================
@@ -664,6 +648,22 @@ footer {
 }
 .glow-reveal.is-glowing {
     opacity: 1;
+}
+
+/* 空白から浮かび上がる演出 */
+.emerge-reveal {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(0.95);
+    transition: 
+        opacity 1.5s ease-out,
+        filter 1.5s ease-out,
+        transform 1.5s ease-out;
+}
+.emerge-reveal.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
 }
 
 /* ピンクの光 */

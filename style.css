@@ -667,7 +667,6 @@ span.glow-reveal.t-gold.is-glowing,
    ④ スクロール誘導のスタイル
 =========================== */
 .scroll-hint {
-    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;

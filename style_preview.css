@@ -104,8 +104,6 @@ h2.section-title span.en {
 .fv {
     padding: 100px 0 60px;
     text-align: center;
-    /* 自動フェードアウト用 */
-    animation: fadeOutSection 1.5s ease forwards 8.5s;
 }
 
 .fv-logo {
@@ -646,12 +644,6 @@ span.glow-reveal.t-gold.is-glowing,
 /* ===========================
    ④ エントランスシーケンス：FVから次セクションへの自動遷移
 =========================== */
-
-/* FV全体のフェードアウト */
-@keyframes fadeOutSection {
-    0%   { opacity: 1; filter: blur(0); }
-    100% { opacity: 0; filter: blur(10px); pointer-events: none; }
-}
 
 /* 次の画像セクションの自動フェードイン（スクロール前） */
 .animate-entrance-next {

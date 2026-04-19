@@ -26,7 +26,7 @@
 - **構成**: HTML5 / CSS3 / Vanilla JS (No Frameworks)
 - **デプロイ**: 
     - Git管理 (GitHub)
-    - **Netlify** による自動デプロイ。`main` ブランチへのプッシュで即座に反映。
+    - **Cloudflare Pages / Workers** による自動デプロイ。`main` ブランチへのプッシュで即座に反映。
 - **ディレクトリ構造**:
     - `index.html`: メインページ
     - `style.css`: 全デザイン定義（レスポンシブ対応）

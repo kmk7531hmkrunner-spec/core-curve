@@ -729,6 +729,34 @@ footer {
     opacity: 1;
 }
 
+/* ゆっくりとした重みのある出現（ネガティブ・内省用） */
+.scroll-fade-slow {
+    transition:
+        opacity  1.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.scroll-fade-slower {
+    transition:
+        opacity  2.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 2.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* 希望に満ちた輝きの強調（ポジティブ用） */
+.hope-shine {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hope-shine.is-visible {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 0 0 25px rgba(219, 192, 158, 0.9), 0 0 45px rgba(255, 255, 255, 0.4);
+}
+
 /* 空白から浮かび上がる演出 */
 .emerge-reveal {
     opacity: 0;

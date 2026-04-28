@@ -57,37 +57,42 @@
                 <h2 class="section-title scroll-fade" style="margin-bottom:40px;"><span class="en">To You</span><span
                         class="u-one-line">「なりたかった私」を今からー。</span></h2>
 
-                <p class="scroll-fade t-sub" style="margin-bottom: 60px;">「そういえば、自分のことはいつも後回しだな..」</p>
+                <p class="scroll-fade scroll-fade-slow t-sub" style="margin-bottom: 60px;">「そういえば、自分のことはいつも後回しだな..」</p>
 
-                <p class="scroll-fade">朝、目覚ましより先に感じる、体の重さ。<br>
+                <p class="scroll-fade scroll-fade-slow">朝、目覚ましより先に感じる、体の重さ。<br>
                 肩こりや腰の痛みは、もはやいつものこと。</p>
 
-                <p class="scroll-fade">ふと鏡に映った自分に、思わずため息がもれる。<br>
-                家族のため、仕事のために走り続けてきたけれど、<br>
-                「昔はもっと、シャキッとしてたのにな...」</p>
+                <p class="scroll-fade scroll-fade-slow">ふと鏡に映った自分に、思わずため息がもれる。</p>
 
-                <p class="scroll-fade">ヨガ、ジム、食事制限。<br>
+                <p class="scroll-fade scroll-fade-slow">家族のため、仕事のために走り続けてきたけれど、</p>
+
+                <p class="scroll-fade scroll-fade-slow">「昔はもっと、シャキッとしてたのにな...」</p>
+
+                <p class="scroll-fade scroll-fade-slow">ヨガ、ジム、食事制限。<br>
                 色々試したけど、結局続かなかった。</p>
 
-                <p class="scroll-fade t-sub" style="margin-bottom: 60px;">「どうせ私なんて―。」</p>
+                <p class="scroll-fade scroll-fade-slower t-sub" style="margin-bottom: 60px;">「どうせ私なんて―。」</p>
 
-                <p class="scroll-fade" style="margin-bottom: 60px;">と、心のどこかで諦めていませんか?</p>
+                <p class="scroll-fade scroll-fade-slower" style="margin-bottom: 60px;">と、心のどこかで諦めていませんか?</p>
 
-                <p class="scroll-fade t-sub">「疲れやすいのも、体型が戻らないのも、<br>年齢だから仕方ない」</p>
+                <p class="scroll-fade scroll-fade-slower t-sub">「疲れやすいのも、体型が戻らないのも、<br>年齢だから仕方ない」</p>
 
-                <p class="scroll-fade">その<span class="t-sub">"仕方ない"</span>で、本当に、<br>
+                <p class="scroll-fade scroll-fade-slower">その<span class="t-sub">"仕方ない"</span>で、本当に、<br>
                 終わりにしちゃっていいですか?</p>
 
-                <p class="scroll-fade">考えてみてください。<br>
+                <p class="scroll-fade scroll-fade-slower">考えてみてください。<br>
                 もし、あなたが心からの笑顔を取り戻せたら?</p>
 
-                <p class="scroll-fade">あなたのかけがえのない身体は、もうあなただけのものじゃない。</p>
+                <p class="scroll-fade scroll-fade-slower">あなたのかけがえのない身体は、もうあなただけのものじゃない。</p>
 
-                <p class="scroll-fade t-pink">子供に「ママ、きれい!」って言われる未来。</p>
-                <p class="scroll-fade t-pink">週末、家族と全力で笑いあえる体力。</p>
+                <p class="scroll-fade t-pink" style="font-size: 1.1rem; text-shadow: 0 0 15px var(--accent-pink);">子供に「ママ、きれい!」って言われる未来。</p>
+                <p class="scroll-fade t-pink" style="font-size: 1.1rem; text-shadow: 0 0 15px var(--accent-pink);">週末、家族と全力で笑いあえる体力。</p>
 
-                <p class="scroll-fade">そして何より、<br>
-                <span class="t-gold glow-reveal">”自分に自信が持てた”あの頃の輝き。</span></p>
+                <p class="scroll-fade">そして何より、</p>
+
+                <p class="scroll-fade" style="margin: 80px 0;">
+                    <span class="hope-shine">”自分に自信が持てた”あの頃の輝き。</span>
+                </p>
 
                 <p class="scroll-fade">今こそ、あなたの身体を最優先にしませんか?</p>
 
@@ -96,10 +101,10 @@
                 大切なのは、忙しいあなたでもできる、</p>
 
                 <p class="scroll-fade">
-                    <span class="t-pink glow-reveal" style="font-size: 1.1rem; font-weight: bold;">自分を大切にする「身体を整える新習慣」です。</span>
+                    <span class="t-pink glow-reveal" style="font-size: 1.2rem; font-weight: bold;">自分を大切にする「身体を整える新習慣」です。</span>
                 </p>
 
-                <p class="scroll-fade t-pink">Core & Curveは、あなたが踏み出すその一歩を応援します。</p>
+                <p class="scroll-fade t-pink" style="font-weight: bold; font-size: 1.1rem;">Core & Curveは、あなたが踏み出すその一歩を応援します。</p>
             </div>
         </section>
 
@@ -391,7 +396,7 @@
         <!-- スクロールアニメーション JS -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const fadeEls = document.querySelectorAll('.scroll-fade');
+                const fadeEls = document.querySelectorAll('.scroll-fade, .hope-shine');
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -399,7 +404,7 @@
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { rootMargin: '0px 0px -200px 0px', threshold: 0.1 });
+                }, { rootMargin: '0px 0px -55% 0px', threshold: 0 });
 
                 fadeEls.forEach(el => observer.observe(el));
 

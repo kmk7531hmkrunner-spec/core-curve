@@ -475,6 +475,29 @@ h2.section-title span.en {
 /* ===========================
    レビュー・お客様の声カード
 =========================== */
+/* さりげない中間CTA用：グラスモーフィズム・ボタン */
+.btn-glass-cta {
+    display: inline-block;
+    padding: 10px 28px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(219, 192, 158, 0.4);
+    border-radius: 100px;
+    color: var(--accent-gold);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(8px);
+    margin-top: 20px;
+}
+.btn-glass-cta:hover {
+    background: rgba(219, 192, 158, 0.08);
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(225, 166, 180, 0.15);
+}
+
 .review-card {
     background: var(--bg-glass);
     backdrop-filter: blur(20px);

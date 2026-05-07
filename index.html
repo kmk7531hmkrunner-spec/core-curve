@@ -126,6 +126,9 @@
             </div>
             <div class="story-block">
                 <p class="scroll-fade">Body Designer Ayakaです。</p>
+                <div class="scroll-fade" style="text-align: center; margin: -10px 0 30px;">
+                    <button class="btn-detail" onclick="openProfile()">プロフィール詳細を見る</button>
+                </div>
                 <p class="scroll-fade">私自身、三兄弟の出産後に体は激変。<br>「どうしてこの体は壊れていくの？」と<br>絶望すら感じる日々を送っていました。</p>
                 <p class="scroll-fade">時間のないママに、<br>激しい運動や食事制限なんて無理。<br>私もそうでした。</p>
                 <p class="scroll-fade">だからこそ、きつい我慢ではなく、<br>
@@ -567,6 +570,43 @@
                 document.getElementById('modal-label').textContent = data.label;
                 document.getElementById('modal-desc').innerHTML = data.desc; // HTMLとして埋め込み
                 document.getElementById('modal-diagnosis-cta').style.display = 'none'; // レビュー時は非表示
+                modal.style.display = 'flex';
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        modal.classList.add('is-open');
+                    });
+                });
+            };
+
+            window.openProfile = function () {
+                document.getElementById('modal-count').textContent = '✔ PROFILE';
+                const typeEl = document.getElementById('modal-type');
+                typeEl.innerHTML = '';
+                document.getElementById('modal-label').textContent = '';
+                
+                const profileHTML = `
+                    <img src="bodytrainerayaka2.png" alt="Body Designer Ayaka" class="img-fluid" style="margin-top:0; margin-bottom:20px;">
+                    <div style="text-align:left; font-size:13px; line-height:1.8;">
+                        <p style="margin-bottom:15px; text-align:center;">
+                            <span style="font-size:18px; font-weight:bold; color:var(--accent-gold);">Body Designer Ayaka</span><br>
+                            <span style="font-size:12px; color:var(--text-sub);">1988年生まれ / 横浜市在住 / 3児の母</span>
+                        </p>
+                        <div style="background: rgba(255,255,255,0.05); padding:12px; border-radius:8px; margin-bottom:15px; border: 1px solid var(--line-glass);">
+                            <span style="color:var(--accent-pink); font-weight:bold; font-size:12px;">保有資格・経歴</span><br>
+                            ・ＪＭＰＡ認定 産後ダイエットトレーナー<br>
+                            ・ピラティスインストラクター<br>
+                            ・ＭＯＳＳＡ インストラクター<br>
+                            ・スポーツクラブ ジムスタッフ／加圧専門パーソナルトレーナー
+                        </div>
+                        <p style="margin-bottom:10px; font-size:13px;">
+                            産後、自身の体型崩れや不調に悩みつつも、男の子3兄弟を連れて気軽に通えるスタジオがなく苦労した経験を持つ。<br>
+                            その経験から「産後ダイエットトレーナー」の資格を取得。<br><br>
+                            オンラインで気軽にママ友を作ったり、体を動かしてリフレッシュしたり、時には本気でダイエットしてみたり…そんなスタジオを目指しています＊
+                        </p>
+                    </div>
+                `;
+                document.getElementById('modal-desc').innerHTML = profileHTML;
+                document.getElementById('modal-diagnosis-cta').style.display = 'none';
                 modal.style.display = 'flex';
                 requestAnimationFrame(function () {
                     requestAnimationFrame(function () {

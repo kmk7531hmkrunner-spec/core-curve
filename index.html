@@ -422,6 +422,34 @@
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const fadeEls = document.querySelectorAll('.scroll-fade, .hope-shine');
+                const glowEls = document.querySelectorAll('.glow-reveal');
+
+                // 即座に表示状態を確認する関数
+                const checkVisibilityOnLoad = () => {
+                    const viewportBottom = window.scrollY + window.innerHeight;
+                    
+                    fadeEls.forEach(el => {
+                        const rect = el.getBoundingClientRect();
+                        const elementTop = rect.top + window.scrollY;
+                        // すでに画面内にある、または通り過ぎている場合は即表示
+                        if (elementTop < viewportBottom) {
+                            el.classList.add('is-visible');
+                        }
+                    });
+
+                    glowEls.forEach(el => {
+                        const rect = el.getBoundingClientRect();
+                        const elementTop = rect.top + window.scrollY;
+                        if (elementTop < viewportBottom) {
+                            el.classList.add('is-glowing');
+                        }
+                    });
+                };
+
+                // 初回チェック
+                checkVisibilityOnLoad();
+
+                // 通常のスクロール監視（rootMarginを少し甘くして、スクロール時の体験をスムーズに）
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -429,11 +457,14 @@
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { rootMargin: '0px 0px -35% 0px', threshold: 0 });
+                }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
 
-                fadeEls.forEach(el => observer.observe(el));
+                fadeEls.forEach(el => {
+                    if (!el.classList.contains('is-visible')) {
+                        observer.observe(el);
+                    }
+                });
 
-                const glowEls = document.querySelectorAll('.glow-reveal');
                 const glowObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -441,9 +472,13 @@
                             glowObserver.unobserve(entry.target);
                         }
                     });
-                }, { rootMargin: '0px 0px -40% 0px', threshold: 0 });
+                }, { rootMargin: '0px 0px -15% 0px', threshold: 0 });
 
-                glowEls.forEach(el => glowObserver.observe(el));
+                glowEls.forEach(el => {
+                    if (!el.classList.contains('is-glowing')) {
+                        glowObserver.observe(el);
+                    }
+                });
 
                 // エントランスエフェクト終了時（約6秒後）にスクロールロックを解除
                 setTimeout(() => {

@@ -362,7 +362,7 @@
 
                 <p class="t-pink scroll-fade" style="font-size: 20px; font-weight: bold; margin-bottom: 5px;">第1期生限定モニター募集</p>
                 <div class="scroll-fade" style="margin-bottom: 20px;">
-                    <span class="t-gold" style="font-size: 18px; font-weight: bold; border-bottom: 2px solid var(--accent-gold); padding-bottom: 2px;">残り若干名</span>
+                    <span class="t-gold" style="font-size: 18px; font-weight: bold; border-bottom: 2px solid var(--accent-gold); padding-bottom: 2px;">残り<span id="monitor-count-display">5</span>名</span>
                 </div>
                 <p class="t-sub scroll-fade" style="font-size:12px; line-height: 2.0; margin-bottom:40px; text-wrap: balance;">
                     一人ひとりの身体の状態を深く理解し、二人三脚で丁寧なサポートをお届けすることを大切にしています。<br>
@@ -420,7 +420,16 @@
 
         <!-- スクロールアニメーション JS -->
         <script>
+            // ==========================================
+            // 【管理用】設定項目（ここを書き換えるだけで反映されます）
+            // ==========================================
+            const MONITOR_COUNT = "5"; // 残り人数の数字部分
+
             document.addEventListener('DOMContentLoaded', function () {
+                // 残り人数の反映
+                const countDisplay = document.getElementById('monitor-count-display');
+                if (countDisplay) countDisplay.textContent = MONITOR_COUNT;
+
                 const fadeEls = document.querySelectorAll('.scroll-fade, .hope-shine');
                 const glowEls = document.querySelectorAll('.glow-reveal');
 

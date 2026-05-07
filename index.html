@@ -449,6 +449,19 @@
                 // 初回チェック
                 checkVisibilityOnLoad();
 
+                // 更新時（すでにスクロールされている場合）はロックを即座に解除
+                if (window.scrollY > 50) {
+                    document.body.classList.remove('is-locked');
+                    // スクロールヒントも不要なので即非表示
+                    const scrollHint = document.querySelector('.scroll-hint');
+                    if (scrollHint) scrollHint.style.display = 'none';
+                } else {
+                    // 通常（トップから開始）の場合は6秒後に解除
+                    setTimeout(() => {
+                        document.body.classList.remove('is-locked');
+                    }, 6000);
+                }
+
                 // 通常のスクロール監視（rootMarginを少し甘くして、スクロール時の体験をスムーズに）
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -480,10 +493,7 @@
                     }
                 });
 
-                // エントランスエフェクト終了時（約6秒後）にスクロールロックを解除
-                setTimeout(() => {
-                    document.body.classList.remove('is-locked');
-                }, 6000);
+
 
                 // スクロールエフェクトが見えなくなるまでスクロールしたら完全に消去する（再表示しない）
                 const scrollHint = document.querySelector('.scroll-hint');
